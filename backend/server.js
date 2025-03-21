@@ -16,13 +16,22 @@ connectCloudinary()
 
 // middlewares
 app.use(express.json())
-app.use(cors())
+// app.use(cors(corsOptions))
+
+app.use(cors({ origin: '*' }));
 
 // api endpoints
 app.use('/api/user',userRouter)
 app.use('/api/product',productRouter)
 app.use('/api/cart',cartRouter)
 app.use('/api/order',orderRouter)
+
+// Allow requests from the specific frontend domain
+const corsOptions = {
+    origin: 'https://ecommerce-frontend-one-azure.vercel.app',
+  };
+
+  
 
 app.get('/',(req,res)=>{
     res.send("API Working")
