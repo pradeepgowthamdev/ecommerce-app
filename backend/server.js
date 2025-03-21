@@ -16,6 +16,13 @@ connectCloudinary()
 
 // middlewares
 app.use(express.json())
+
+// Allow requests from the specific frontend domain
+// const corsOptions = {
+//     origin: 'https://ecommerce-frontend-one-azure.vercel.app',
+//   };
+
+
 // app.use(cors(corsOptions))
 app.use(cors());
 // app.use(cors({ origin: '*' }));
@@ -26,12 +33,7 @@ app.use('/api/product',productRouter)
 app.use('/api/cart',cartRouter)
 app.use('/api/order',orderRouter)
 
-// Allow requests from the specific frontend domain
-const corsOptions = {
-    origin: 'https://ecommerce-frontend-one-azure.vercel.app',
-  };
 
-  
 
 app.get('/',(req,res)=>{
     res.send("API Working")
